@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>John Ezequeil - BSIT Portfolio</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            color: #ffffff;
+            background: #0f172a;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --primary: #f97316;
+            --accent: #8b5cf6;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(15, 23, 42, 0.95);
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 2px;
+            background: #fff;
+            transition: 0.3s;
+        }
+
+        #home {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+        }
+
+        .hero-content {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .hero-tag {
+            background: rgba(255,255,255,0.1);
+            padding: 8px 20px;
+            border-radius: 50px;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin: 20px 0;
+        }
+
+        .hero-content h1 span {
+            background: linear-gradient(135deg, #f97316, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-content p {
+            color: rgba(255,255,255,0.7);
+            font-size: 1.2rem;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #f97316, #8b5cf6);
+            color: #fff;
+            padding: 14px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            margin-top: 20px;
+            font-weight: 600;
+        }
+
+        section {
+            padding: 80px 20px;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 30px;
+        }
+
+        .section-title span {
+            color: var(--primary);
+        }
+
+        #about {
+            background: #1e293b;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 40px;
+        }
+
+        .about-card {
+            background: #0f172a;
+            padding: 30px;
+            border-radius: 20px;
+        }
+
+        .about-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .about-card .role {
+            color: var(--primary);
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .about-card p {
+            color: rgba(255,255,255,0.8);
+            line-height: 1.7;
+        }
+
+        .about-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .info-box {
+            background: rgba(255,255,255,0.05);
+            padding: 20px;
+            border-radius: 12px;
+        }
+
+        .info-box h4 {
+            color: var(--primary);
+            font-size: 0.8rem;
+            margin-bottom: 5px;
+        }
+
+        .info-box p {
+            font-weight: 600;
+        }
+
+        #skills {
+            background: #0f172a;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-card {
+            background: rgba(255,255,255,0.05);
+            padding: 25px;
+            border-radius: 15px;
+        }
+
+        .skill-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-tag {
+            background: rgba(249,115,22,0.2);
+            color: var(--primary);
+            padding: 6px 14px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+        }
+
+        #seminars {
+            background: #1e293b;
+        }
+
+        .seminar-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .seminar-card {
+            background: #0f172a;
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 4px solid var(--accent);
+        }
+
+        .seminar-card h3 {
+            margin-bottom: 8px;
+        }
+
+        .seminar-card .venue {
+            color: var(--accent);
+            font-size: 0.8rem;
+        }
+
+        #education {
+            background: #0f172a;
+        }
+
+        .edu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .edu-card {
+            background: rgba(255,255,255,0.05);
+            padding: 25px;
+            border-radius: 15px;
+        }
+
+        .edu-card h3 {
+            margin-bottom: 8px;
+        }
+
+        .edu-card .school {
+            color: var(--primary);
+            font-size: 0.8rem;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        #current {
+            background: linear-gradient(135deg, #f97316, #8b5cf6);
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        #current h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+
+        #current p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        #contact {
+            background: #0f172a;
+            text-align: center;
+        }
+
+        .contact-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .contact-item {
+            background: rgba(255,255,255,0.05);
+            padding: 20px;
+            border-radius: 12px;
+        }
+
+        .contact-item h4 {
+            color: var(--primary);
+            font-size: 0.8rem;
+            margin-bottom: 8px;
+        }
+
+        .contact-btn {
+            display: inline-block;
+            background: var(--primary);
+            color: #fff;
+            padding: 14px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        footer {
+            background: #06080f;
+            padding: 25px;
+            text-align: center;
+            color: rgba(255,255,255,0.4);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background: #0f172a;
+                flex-direction: column;
+                padding: 25px;
+                gap: 15px;
+                display: none;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hero-content h1 {
+                font-size: 2.4rem;
+            }
+
+            .about-grid, .about-info {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">John<span>Ezequeil</span></div>
+        <div class="hamburger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#seminars">Seminars</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section id="home">
+        <div class="hero-content">
+            <span class="hero-tag">BSIT Student</span>
+            <h1>John Ezequeil<br><span>Thomas R. Reyes</span></h1>
+            <p>Portfolio</p>
+            <a href="#about" class="cta-btn">Explore More</a>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2 class="section-title">About <span>Me</span></h2>
+        <div class="about-grid">
+            
+            <!-- Image with inline CSS -->
+            <div style="background: #0f172a; padding: 20px; border-radius: 20px; display: flex; align-items: center; justify-content: center;">
+                <img src="what.png" alt="John Ezequeil" style="width: 100%; max-width: 300px; height: auto; border-radius: 15px; display: block;">
+            </div>
+
+            <div class="about-card">
+                <h3>Hello, I'm John!</h3>
+                <span class="role">BSIT Student</span>
+                <p>A dedicated and motivated 1st year BSIT student with a passion for technology and continuous learning. Experienced in leadership roles and technical computation skills. Committed to professional development and eager to contribute to innovative projects.</p>
+            </div>
+            
+            <div class="about-info">
+                <div class="info-box">
+                    <h4>LOCATION</h4>
+                    <p>Prk. Gemini, Lasang, Davao City</p>
+                </div>
+                <div class="info-box">
+                    <h4>STATUS</h4>
+                    <p>BSIT Student (1st Year)</p>
+                </div>
+                <div class="info-box">
+                    <h4>INTERESTS</h4>
+                    <p>Programming, Web Dev, Tech</p>
+                </div>
+                <div class="info-box">
+                    <h4>GOALS</h4>
+                    <p>Full Stack Developer</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2 class="section-title">Special <span>Skills</span></h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <h3>Technical Skills</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Computation</span>
+                    <span class="skill-tag">MS Office</span>
+                    <span class="skill-tag">Word</span>
+                    <span class="skill-tag">Excel</span>
+                    <span class="skill-tag">PowerPoint</span>
+                </div>
+            </div>
+            <div class="skill-card">
+                <h3>Soft Skills</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Leadership</span>
+                    <span class="skill-tag">Time Management</span>
+                    <span class="skill-tag">Critical Thinking</span>
+                    <span class="skill-tag">Communication</span>
+                </div>
+            </div>
+            <div class="skill-card">
+                <h3>Teamwork</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Collaboration</span>
+                    <span class="skill-tag">Team Player</span>
+                    <span class="skill-tag">Problem Solving</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="seminars">
+        <h2 class="section-title">Seminars <span>Attended</span></h2>
+        <div class="seminar-grid">
+            <div class="seminar-card">
+                <h3>Leadership Program for the Youth</h3>
+                <p>2022-2023</p>
+                <span class="venue">Lasang, Davao City</span>
+            </div>
+            <div class="seminar-card">
+                <h3>First Aid and Basic Life Support</h3>
+                <p>Training</p>
+                <span class="venue">Holy Cross of Bunawan, Inc.</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="education">
+        <h2 class="section-title">Education</h2>
+        
+        <div class="edu-grid">
+            <div id="current">
+                <h3>Currently Studying</h3>
+                <p>Davao Del Norte State College</p>
+                <p>BSIT - Information Technology</p>
+            </div>
+            
+            <div class="edu-card">
+                <h3>Senior High School</h3>
+                <span class="school">Holy Cross of Bunawan</span>
+                <p>ABM Strand (Accountancy, Business & Management)</p>
+            </div>
+            
+            <div class="edu-card">
+                <h3>High School</h3>
+                <span class="school">A.L. Navarro National High School</span>
+                <p>Secondary Education</p>
+            </div>
+            
+            <div class="edu-card">
+                <h3>Elementary</h3>
+                <span class="school">A.L. Navarro Central Elementary School</span>
+                <p>Primary Education</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="contact-container">
+            <h2 class="section-title">Contact <span>Me</span></h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <h4>PHONE</h4>
+                    <p>09065848428</p>
+                </div>
+                <div class="contact-item">
+                    <h4>EMAIL</h4>
+                    <p>reyesjohnezequeil@gmail.com</p>
+                </div>
+                <div class="contact-item">
+                    <h4>ADDRESS</h4>
+                    <p>Prk. Gemini, Lasang, Davao City</p>
+                </div>
+            </div>
+            <a href="mailto:reyesjohnezequeil@gmail.com" class="contact-btn">Send Email</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 John Ezequeil Thomas R. Reyes. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            var navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+    </script>
+
+</body>
+</html>
